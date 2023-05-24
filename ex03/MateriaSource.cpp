@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 09:49:40 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/24 11:38:47 by tedelin          ###   ########.fr       */
+/*   Created: 2023/05/24 16:34:00 by tedelin           #+#    #+#             */
+/*   Updated: 2023/05/24 16:57:08 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_H
-# define WRONGCAT_H
-# include "WrongAnimal.hpp"
-# include <string>
+#include "MateriaSource.hpp"
 
-class WrongCat: public WrongAnimal {
-    public:
-        WrongCat();
-        ~WrongCat();
-        WrongCat(const WrongCat& cpy);
-        WrongCat&    operator=(const WrongCat& rhs);
+void	MateriaSource::learnMateria(AMateria*) {
 
-        void    makeSound() const;
-};
+}
 
-#endif
+AMateria*	MateriaSource::createMateria(std::string const & type) {
+	
+}

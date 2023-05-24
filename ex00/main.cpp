@@ -6,7 +6,7 @@
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:29:51 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/22 13:54:50 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/05/24 11:39:14 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ int main() {
     i->makeSound(); //will output the cat sound!
     j->makeSound();
     meta->makeSound();
-    
+	
+    delete j;
+	delete i;
+	delete meta;
+	
     std::cout << "WrongClass Test" << std::endl;
 
     const WrongAnimal* wrong = new WrongAnimal();
@@ -38,6 +42,9 @@ int main() {
 
     wrong->makeSound();
     wrong_cat->makeSound();
+
+	delete wrong_cat;
+	delete wrong;
     
     return 0;
 }

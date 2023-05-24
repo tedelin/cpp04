@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 09:16:12 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/24 11:36:50 by tedelin          ###   ########.fr       */
+/*   Created: 2023/05/24 16:32:06 by tedelin           #+#    #+#             */
+/*   Updated: 2023/05/24 16:32:29 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_H
-#define ANIMAL_H
-#include <string>
-#include <iostream>
-
-class Animal {
-    public:
-        Animal();
-        virtual ~Animal();
-        Animal(std::string a_type);
-        Animal(const Animal& cpy);
-        Animal& operator=(const Animal& rhs);
-
-        virtual void    makeSound() const;
-        std::string     getType() const;
-        
-    protected:
-        std::string type;
-};
+#ifndef CURE_H
+#define CURE_H
 
 #endif

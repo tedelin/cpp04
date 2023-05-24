@@ -6,7 +6,7 @@
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:49:03 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/24 11:38:51 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/05/22 13:28:07 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class WrongAnimal {
     public:
         WrongAnimal();
-        virtual ~WrongAnimal();
+        ~WrongAnimal();
         WrongAnimal(std::string a_type);
         WrongAnimal(const WrongAnimal& cpy);
         WrongAnimal& operator=(const WrongAnimal& rhs);

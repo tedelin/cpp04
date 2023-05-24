@@ -6,7 +6,7 @@
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:16:12 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/22 13:21:32 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:09:58 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 class Animal {
     public:
         Animal();
-        ~Animal();
+        virtual ~Animal();
         Animal(std::string a_type);
         Animal(const Animal& cpy);
         Animal& operator=(const Animal& rhs);
 
-        virtual void    makeSound() const;
+        virtual void    makeSound() const = 0;
         std::string     getType() const;
         
     protected:
