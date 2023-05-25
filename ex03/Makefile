@@ -6,15 +6,15 @@
 #    By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/15 17:24:24 by tedelin           #+#    #+#              #
-#    Updated: 2023/05/24 16:13:43 by tedelin          ###   ########.fr        #
+#    Updated: 2023/05/25 13:35:11 by tedelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex02
-SRC = main.cpp 
+NAME = ex03
+SRC = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -g -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
