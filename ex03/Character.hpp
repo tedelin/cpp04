@@ -6,7 +6,7 @@
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 16:32:53 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/25 18:27:26 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/05/26 15:59:22 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 class Character : public ICharacter
 {
 	public:
+		Character();
 		Character(std::string const & name);
 		Character(Character const & cpy);
-		virtual ~Character();
+		~Character();
 		Character & operator=(Character const & rhs);
 		
 		std::string const & getName() const;
@@ -30,9 +31,8 @@ class Character : public ICharacter
 	private:
 		static const int _maxItems = 4;
 
-		Character();
 		std::string _name;
-		AMateria* _inventory[4];
+		AMateria* _inventory[Character::_maxItems];
 };
 
 #endif

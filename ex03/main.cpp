@@ -9,32 +9,47 @@
 
 int main()
 {
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
-	ICharacter* me = new Character("me");
-	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
-	ICharacter* bob = new Character("bob");
-	me->use(0, *bob);
-	me->use(1, *bob);
-	// me->unequip(0);
+	{
+		IMateriaSource* src = new MateriaSource();
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
 
-	std::cout << "-- TEST --" << std::endl;
-	ICharacter* cpy;
-	cpy = me;
-	cpy->use(0, *bob);
-	delete me;
-	cpy->unequip(0);
-	// cpy->use(1, *bob);
+		ICharacter* me = new Character("me");
+		
+		AMateria* tmp;
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+
+		ICharacter* bob = new Character("bob");
+
+		me->use(0, *bob);
+		me->use(1, *bob);
+
+		delete bob;
+		delete me;
+		delete src;
+
+		// return 0;
+	}
+	{
+		std::cout << "---------- My test ----------" << std::endl;
+		IMateriaSource* src = new MateriaSource();
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
+
+		Character* rick = new Character("Rick");
+		Character* john = new Character("John");
+		AMateria* tmp = src->createMateria("ice");
+		rick->equip(tmp);
+		tmp = NULL;
+		rick->equip(tmp);
+
+		// john->equip(tmp);
 	
-
-	// delete me;
-
-	delete bob;
-	delete src;
-	return 0;
+		delete rick;
+		delete john;
+		delete src;
+	}
 }
