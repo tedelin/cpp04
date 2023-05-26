@@ -6,7 +6,7 @@
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 16:32:56 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/26 16:22:04 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/05/26 21:12:40 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,12 @@ std::string const & Character::getName() const {
 void	Character::equip(AMateria* m) {
 	if (!m)
 	{
-		std::cout << "Materia unknown or already equiped with another character" << std::endl;
+		std::cout << "Materia unknown" << std::endl;
 		return ;
 	}
 	for (int i = 0; i < _maxItems; i++) {
-		if (_inventory[i] == m) {
-			std::cout << "Can't add the same item twice" << std::endl;
-			return ;
-		}
-	}
-	for (int i = 0; i < _maxItems; i++) {
 		if (!_inventory[i]) {
-			_inventory[i] = m;
-			m = NULL;
+			_inventory[i] = m->clone();
 			std::cout << "Materia " << _inventory[i]->getType() << " equipped" << " at index " << i << std::endl;
 			return ;
 		}
@@ -78,7 +71,7 @@ void	Character::equip(AMateria* m) {
 void	Character::unequip(int idx) {
 	if (idx >= 0 && idx < _maxItems) {
 		if (_inventory[idx]) {
-			// delete this->_inventory[idx];
+			delete _inventory[idx];
 			this->_inventory[idx] = NULL;
 		}
 	}
@@ -97,7 +90,8 @@ Character::~Character(void)
 {
 	for (int i = 0; i < _maxItems; i++)
 	{
-		if (_inventory[i])
+		if (_inventory[i]) {
 			delete _inventory[i];
+		}
 	}
 }

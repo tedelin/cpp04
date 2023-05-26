@@ -17,10 +17,12 @@ int main()
 		ICharacter* me = new Character("me");
 		
 		AMateria* tmp;
+		AMateria* tmp2;
+
 		tmp = src->createMateria("ice");
 		me->equip(tmp);
-		tmp = src->createMateria("cure");
-		me->equip(tmp);
+		tmp2 = src->createMateria("cure");
+		me->equip(tmp2);
 
 		ICharacter* bob = new Character("bob");
 
@@ -30,26 +32,51 @@ int main()
 		delete bob;
 		delete me;
 		delete src;
-
-		// return 0;
+		delete tmp;
+		delete tmp2;
 	}
 	{
 		std::cout << "---------- My test ----------" << std::endl;
+		ICharacter* me = new Character("me");
+		ICharacter* bob = new Character("bob");
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());
 		src->learnMateria(new Cure());
+		AMateria* tmp;
 
-		Character* rick = new Character("Rick");
-		Character* john = new Character("John");
-		AMateria* tmp = src->createMateria("ice");
-		rick->equip(tmp);
-		tmp = NULL;
-		rick->equip(tmp);
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
 
-		// john->equip(tmp);
-	
-		delete rick;
-		delete john;
+		me->use(0, *bob);
+		me->use(1, *bob);
+		me->use(2, *bob);
+
+		std::cout << std::endl;
+
+		me->unequip(2);
+		me->use(0, *bob);
+		me->use(1, *bob);
+		me->use(2, *bob);
+		
+		std::cout << std::endl;
+
+		me->unequip(1);
+		me->use(0, *bob);
+		me->use(1, *bob);
+		me->use(2, *bob);
+
+		std::cout << std::endl;
+
+		me->unequip(0);
+		me->use(0, *bob);
+		me->use(1, *bob);
+		me->use(2, *bob);
+
+		delete bob;
+		delete me;
 		delete src;
+		delete tmp;
+
+		return 0;
 	}
 }
