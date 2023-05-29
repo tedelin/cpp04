@@ -13,70 +13,50 @@ int main()
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());
 		src->learnMateria(new Cure());
+		ICharacter* me = new Character("me");
+		AMateria* tmp;
+		tmp = src->createMateria("ice");
+		me->equip(tmp);
+		tmp = src->createMateria("cure");
+		me->equip(tmp);
+		ICharacter* bob = new Character("bob");
+		me->use(0, *bob);
+		me->use(1, *bob);
+		delete bob;
+		delete me;
+		delete src;
+	}
+	{
+		IMateriaSource* src = new MateriaSource();
+		src->learnMateria(new Ice());
+		src->learnMateria(new Cure());
 
 		ICharacter* me = new Character("me");
-		
+		Character* bob = new Character("bob");
 		AMateria* tmp;
 		AMateria* tmp2;
 
 		tmp = src->createMateria("ice");
-		me->equip(tmp);
 		tmp2 = src->createMateria("cure");
-		me->equip(tmp2);
-
-		ICharacter* bob = new Character("bob");
-
-		me->use(0, *bob);
-		me->use(1, *bob);
-
-		delete bob;
-		delete me;
-		delete src;
-		delete tmp;
-		delete tmp2;
-	}
-	{
-		std::cout << "---------- My test ----------" << std::endl;
-		ICharacter* me = new Character("me");
-		ICharacter* bob = new Character("bob");
-		IMateriaSource* src = new MateriaSource();
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-		AMateria* tmp;
-
-		tmp = src->createMateria("ice");
 		me->equip(tmp);
-
-		me->use(0, *bob);
-		me->use(1, *bob);
-		me->use(2, *bob);
-
-		std::cout << std::endl;
-
-		me->unequip(2);
-		me->use(0, *bob);
-		me->use(1, *bob);
-		me->use(2, *bob);
-		
-		std::cout << std::endl;
-
-		me->unequip(1);
-		me->use(0, *bob);
-		me->use(1, *bob);
-		me->use(2, *bob);
-
-		std::cout << std::endl;
-
 		me->unequip(0);
-		me->use(0, *bob);
-		me->use(1, *bob);
-		me->use(2, *bob);
+		bob->equip(tmp);
 
-		delete bob;
-		delete me;
+		Character* cpy = new Character(*bob);
+		cpy->use(0, *me);
+		bob->use(0, *me);
+
+		Character tst = Character("tst");
+		Character tst2 = Character("tst2");
+
+		tst.equip(tmp2);
+		tst2 = tst;
+		tst2.use(0, *me);
+
 		delete src;
-		delete tmp;
+		delete me;
+		delete bob;
+		delete cpy;
 
-		return 0;
 	}
 }

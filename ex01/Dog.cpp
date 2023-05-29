@@ -6,7 +6,7 @@
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 13:15:27 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/24 15:59:51 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/05/27 01:42:30 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ Dog::Dog() : Animal("Dog") {
 
 Dog::Dog(const Dog& cpy) : Animal(cpy) {
     std::cout << "Dog" << " copy constructor has been called" << std::endl;
-    *this = cpy;
+    this->_brain = new Brain(*cpy._brain);
+    this->type = cpy.getType();
 }
 
 Dog&    Dog::operator=(const Dog& rhs) {

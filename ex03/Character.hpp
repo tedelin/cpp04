@@ -6,7 +6,7 @@
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 16:32:53 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/26 15:59:22 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/05/29 16:22:37 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ class Character : public ICharacter
 {
 	public:
 		Character();
-		Character(std::string const & name);
-		Character(Character const & cpy);
+		Character(const std::string& name);
+		Character(const Character& cpy);
 		~Character();
-		Character & operator=(Character const & rhs);
+		Character & operator=(const Character& rhs);
 		
 		std::string const & getName() const;
 		void equip(AMateria* m);

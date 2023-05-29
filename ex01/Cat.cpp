@@ -6,7 +6,7 @@
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 09:24:20 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/24 15:59:45 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/05/27 01:42:07 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ Cat::Cat() : Animal("Cat") {
 
 Cat::Cat(const Cat& cpy) : Animal(cpy) {
     std::cout << "Cat" << " copy constructor has been called" << std::endl;
-    *this = cpy;
+    this->_brain = new Brain(*cpy._brain);
+    this->type = cpy.getType();
 }
 
 Cat&    Cat::operator=(const Cat& rhs) {

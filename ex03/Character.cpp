@@ -6,7 +6,7 @@
 /*   By: tedelin <tedelin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 16:32:56 by tedelin           #+#    #+#             */
-/*   Updated: 2023/05/26 21:12:40 by tedelin          ###   ########.fr       */
+/*   Updated: 2023/05/29 16:24:16 by tedelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,23 @@ Character::Character(void)
 		_inventory[i] = NULL;
 }
 
-Character::Character(std::string const & name)
+Character::Character(const std::string& name)
 {
 	_name = name;
 	for (int i = 0; i < _maxItems; i++)
 		_inventory[i] = NULL;
 }
 
-Character::Character(Character const & cpy)
+Character::Character(const Character& cpy)
 {
-	*this = cpy;
+	_name = cpy._name;
+	for (int i = 0; i < _maxItems; i++)
+	{
+		if (cpy._inventory[i])
+			_inventory[i] = cpy._inventory[i]->clone();
+		else
+			_inventory[i] = NULL;
+	}
 }
 
 Character&	Character::operator=(const Character& rhs) {
@@ -60,7 +67,7 @@ void	Character::equip(AMateria* m) {
 	}
 	for (int i = 0; i < _maxItems; i++) {
 		if (!_inventory[i]) {
-			_inventory[i] = m->clone();
+			_inventory[i] = m;
 			std::cout << "Materia " << _inventory[i]->getType() << " equipped" << " at index " << i << std::endl;
 			return ;
 		}
@@ -71,7 +78,6 @@ void	Character::equip(AMateria* m) {
 void	Character::unequip(int idx) {
 	if (idx >= 0 && idx < _maxItems) {
 		if (_inventory[idx]) {
-			delete _inventory[idx];
 			this->_inventory[idx] = NULL;
 		}
 	}
